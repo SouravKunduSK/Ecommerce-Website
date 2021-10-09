@@ -1,0 +1,198 @@
+﻿@model Shopping.Models.Product
+@{
+    ViewBag.Title = "ViewDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .checked {
+        color: orange;
+    }
+</style>
+<!-- Start All Title Box -->
+<div class="all-title-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>Product's Detail</h2>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Shop</a></li>
+                    <li class="breadcrumb-item active">Product's Detail </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End All Title Box -->
+<!-- Start Shop Detail  -->
+<div class="shop-detail-box-main">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-5 col-lg-5 col-md-6">
+                <div id="carousel-example-1" class="single-product-slider carousel slide" data-ride="carousel">
+                    <div class="card-body">
+                        <div class="carousel-item active"> <img class="d-block w-100" src="~/Uploads/@Url.Content(Model.Picture1)" alt="Product Image"> </div>
+                    </div>  
+                </div>
+            </div>
+            <div class="col-xl-7 col-lg-7 col-md-6">
+                <div class="single-product-details">
+                    <h2>@Model.ProductName <text class="h6">( @Model.QuantityPerUnit )</text></h2>
+
+                    <h5> <del>Rs. @Model.OldPrice</del> Rs. @Model.UnitPrice</h5>
+
+
+
+                    <p class="available-stock"><span> @Model.UnitInStock quantities are available @*/ <a href="#"> 8 sold </a>*@</span></p>
+
+                    <h4>Rating: @*<b>@ViewBag.Avg</b>*@</h4>
+                    
+                    <div class="form-group quantity-box">
+                        @for (int i = 1; i <= 5; i++)
+                        {
+                            if (ViewBag.AvgRate >= i)
+                            {
+                                <span class="fa fa-star checked" @*style="color: #ff6600"*@></span> }
+                            else
+                            {
+                                <span class="fa fa-star" @*style="color: #ff6600"*@></span>}
+                        }
+
+                    </div>
+
+                    <h4>Short Description:</h4>
+                    <p>
+                        @Model.Description
+                    </p>
+                    @*<ul>
+            <li>
+                <div class="form-group quantity-box">
+                    <label class="control-label">Quantity</label>
+                    <input class="form-control" value="0" min="0" max="20" type="number">
+                </div>
+            </li>
+        </ul>*@
+
+                    <hr />
+
+                    <div class="price-box-bar">
+                        <div class="cart-and-bay-btn">
+                            <a class="btn hvr-hover" href="@(Session["username"]!=null ? Url.Action("WishList","Products", new {id=@Model.ProductID }) :Url.Action("Login","Account"))"><i class="fas fa-heart"></i> Add to wishlist</a>
+                            <a class="btn hvr-hover" href="@(Session["username"] != null ? Url.Action("AddToCart", "Products", new { id = @Model.ProductID }) : Url.Action("Login", "Account"))"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div class="col-md-12 row my-5">
+            <div class="card card-outline-secondary my-4">
+                <div class="card-header">
+                    <h2>Product Reviews</h2>
+                    <h4><b>@ViewBag.TotalReviews</b> Reviews for @Model.ProductName [@Model.QuantityPerUnit]</h4>
+                </div>
+                <div class="card-body">
+                    @if (ViewBag.Reviews != null)
+                    {
+                        foreach (var item in ViewBag.Reviews)
+                        {
+                    <div class="media mb-3">
+                        <div class="mr-2"> 
+                            <img class="rounded-circle border p-1" height="80" width="80" src="~/Uploads/@item.Picture" alt="User Image">
+                        </div>
+                        <div class="form-group quantity-box">
+                            @for (int i = 1; i <= 5; i++)
+                            {
+                                if (item.Rate >= i)
+                                {
+                                    <span class="fa fa-star checked" @*style="color: #ff6600"*@></span> }
+                                else
+                                {
+                                    <span class="fas fa-star" @*style="color: #ff6600"*@></span>}
+                            }
+
+                        </div>
+                        <div class="media-body">
+                            <p>@item.Review1</p>
+                            <small class="text-muted">Posted by @item.Username on @item.DateTime</small>
+                        </div>
+                    </div>
+                            <hr>
+                        }
+                    }
+                    <div class="panel-group" id="accordion">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a class="btn hvr-hover" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                                        Leave a Review
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseThree" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <h4>Add a review</h4>
+                                    @if (Session["username"] != null)
+                                    {
+                                        using (Html.BeginForm("AddReview", "Products", new { productID = @Model.ProductID }, FormMethod.Post, new { @class = "aa-review-form" }))
+                                        {
+                                            <div class="aa-your-rating">
+                                                <p>Give Rating</p>
+                                               
+                                                <input type="number" name="rate" min="1" max="5" maxlength="1" value="1" />
+
+                                            </div> <!-- review form -->
+
+                                            <div class="form-group">
+                                                <label for="message">Write Review</label>
+                                                <textarea class="form-control" rows="3" name="message"></textarea>
+                                            </div>
+                                            @*<div class="form-group">
+                                                <label for="name">Name</label>
+                                                <input type="text" class="form-control" name="name" placeholder="Name">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="email">Email</label>
+                                                <input type="email" class="form-control" name="email" placeholder="example@gmail.com">
+                                            </div>*@
+
+                                            <button type="submit" class="btn hvr-hover aa-review-submit">Submit</button> }
+                                    }
+                                    else
+                                    {
+                                        <label>Please login to Add your important Review about product.</label>}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                            @*<a href="#" class="btn hvr-hover">Leave a Review</a>*@
+                </div>
+            </div>
+        </div>
+
+        <div class="row my-5">
+            <div class="col-lg-12">
+                <div class="title-all text-center">
+                    <h1>Related Products</h1>
+                    <p>Fresh ***** Natural ***** Tasty</p>
+                </div>
+                <hr />
+                <div class="featured-products-box owl-carousel owl-theme">
+                    @*<div class="item">*@
+                        @{ @*int co = 0;*@
+                            foreach (var item in (List<Shopping.Models.Product>)@ViewBag.RelatedProducts)
+                            {
+                                //if (co < 6)
+                                { Html.RenderPartial("_Product", item); }
+                                //co++;
+                            }
+                        }
+                    @*</div>*@
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- End Cart -->

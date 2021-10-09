@@ -1,0 +1,58 @@
+﻿@model Shopping.Models.User
+
+@{
+    ViewBag.Title = "Address";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Start All Title Box -->
+<div class="all-title-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>Address</h2>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">My Account</a></li>
+                    <li class="breadcrumb-item active">Address</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End All Title Box -->
+<!-- Start Cart  -->
+<div class="cart-box-main">
+    <div class="container">
+        @if (Model.DistrictID != null)
+        {
+            <div class="row new-account-login">
+
+                <div class="col-sm-6 col-lg-6 mb-3">
+                    <div class="title-left">
+                        <h3>Your Address</h3>
+                    </div>
+                    <h3>Address: <strong>@Model.Address </strong> </h3>
+                    <h3>District: <strong>@Model.District.DistrictName </strong> </h3>
+                    <h3>Postal-Code: <strong>@Model.PostalCode </strong></h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6 col-lg-6 mb-3">
+                    <div class="checkout-address">
+                        <a href="@Url.Action("EditAddress", "Account", new { id = Model.UserID})" class="btn hvr-hover">Edit Address</a>
+                    </div>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="col-sm-6 col-lg-6 mb-3">
+                <div class="checkout-address">
+                    <a href="@Url.Action("EditAddress", "Account", new { id = Model.UserID})" class="btn hvr-hover">Add New Address</a>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+<!-- End  -->

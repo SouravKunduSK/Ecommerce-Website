@@ -1,0 +1,57 @@
+﻿@model Shopping.Models.Product
+
+<div class="products-single fix">
+    <div class="box-img-hover">
+        @if (Model.AddBadge == true)
+        {
+            <div class="type-lb">
+                <p class="sale">@Model.OfferTitle</p>
+            </div>
+        }
+        <img style="height:200px; width:auto;" src="~/Uploads/@Url.Content(Model.Picture1)" class="img-fluid" alt="Product Image">
+        <div class="mask-icon">
+            <ul>
+                <li><a href="@(Url.Action("ViewDetails", "Products", new { id = Model.ProductID }))" data-toggle="tooltip" data-placement="right" title="View Details"><i class="fas fa-eye"></i></a></li>
+                @*<li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>*@
+                <li><a href="@(Session["username"]!=null ? Url.Action("WishList","Products", new {id=@Model.ProductID }) :Url.Action("Login","Account"))" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
+            </ul>
+            @if (Model.UnitInStock > 0)
+            {
+                @*if (Session["qt"] != null && (int)Session["qt"] >= 5)
+                {
+                    <a class="cart text-info" href="@Url.Action("Index", "MyCart")">Go to Cart</a>
+                }
+                else
+                {*@
+                    <a class="cart" href="@(Session["username"] != null ? Url.Action("AddToCart", "Products", new { id = @Model.ProductID }) : Url.Action("Login", "Account"))">Add to Cart</a>
+
+                @*}*@
+
+            }
+            else
+            {
+                <a class="cart text-danger" href="#">Out Of Stock!</a>
+            }
+        </div>
+    </div>
+    <div class="why-text">
+        <h4>@Model.ProductName</h4>
+        <h6>(@Model.QuantityPerUnit)</h6>
+        <h5>
+            <del class="text-danger">
+                @if (Model.OldPrice != null)
+                {
+                    <b class="h6">Rs.@Model.OldPrice </b>}
+            </del> RS.@Model.UnitPrice
+        </h5>
+
+    </div>
+    @{ TempData["returnURL"] = Request.RawUrl; }
+</div>
+
+
+
+
+
+
+

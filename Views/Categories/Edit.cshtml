@@ -1,0 +1,42 @@
+﻿@model Shopping.Models.Category
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-fluid px-4">
+    <h2 class="mt-4">Edit Categories</h2>
+    <!-- Breadcrumbs-->
+
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+        <li class="breadcrumb-item"><a href="index.html">Categories</a></li>
+        <li class="breadcrumb-item active">Edit Categories</li>
+    </ol>
+    <!-- DataTables Example -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-table"></i>
+            Edit Category Name
+
+        </div>
+        <div class="card-body">
+            @using (Html.BeginForm("Edit", "Categories", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.HiddenFor(m => m.CategoryID)
+
+            <div class="form-group">
+                <h4> <label class="control-label">Category Name</label></h4>
+
+                @Html.TextBoxFor(m => m.CategoryName, new { @class = "form-control", placeholder = "Enter Category Name", required = "required", autofocus = "autofocus" })
+                @Html.ValidationMessageFor(m => m.CategoryName, "", new { @class = "text-danger" })<br />
+            </div>
+                <div class="form-group">
+                    <a onclick="window.history.back();" class="btn btn-outline-danger">Cancel</a>
+                    <input type="submit" class="btn btn-info" value="Update" />
+                </div>
+            }
+        </div>
+    </div>
+</div>

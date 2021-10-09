@@ -1,0 +1,118 @@
+﻿@model Shopping.Models.User
+
+@{
+    ViewBag.Title = "SaEdit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="container">
+    @*<h2>Seller Profile</h2>*@
+
+    <div>
+        <h2>Edit Seller Profile</h2>
+        <hr />
+        <h3 class="text-danger">@TempData["msg"]</h3>
+
+        @using (Html.BeginForm("SaEdit", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @*<h4>User</h4>*@
+        
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.UserID)
+        @Html.HiddenFor(model => model.Created)
+        @Html.HiddenFor(model => model.RoleType)
+        @Html.HiddenFor(model => model.Pass)
+        @Html.HiddenFor(model => model.Password)
+        @Html.HiddenFor(model => model.Email)
+        @Html.HiddenFor(model => model.LastLogin)
+
+
+        <div class="content-wrapper">
+            <div class="content">
+                <div class="bg-white border rounded">
+                    <div class="row no-gutters">
+                        <div class="col-lg-4 col-xl-3">
+                            <div class="profile-content-left pt-5 pb-3 px-3 px-xl-5">
+                                <div class="card text-center widget-profile px-0 border-0">
+                                    <input type="hidden" name="id" value="@Model.UserID" />
+                                    <h4>Profile Picture</h4>
+                                    <hr />
+                                    @*<div class="card-img mx-auto rounded-circle">*@
+                                        <img width="180" src="~/Uploads/@Url.Content(Model.Picture)" alt="user image">
+                                    @*</div>*@
+                                    <div class="card-body">
+                                        @*<h4 class="py-2 text-dark">@Session["sellername"]</h4>*@
+                                        @*<p>Albrecht.straub@gmail.com</p>*@
+
+                                        <h4>Choose Image</h4>
+                                        <input type="file" name="Image" id="file" style="width: 100%;" />
+                                        @Html.ValidationMessageFor(model => model.Picture, "", new { @class = "text-danger" })
+
+
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-lg-8 col-xl-9">
+                            <div class="profile-content-right py-5">
+                                <ul class="nav nav-tabs px-3 px-xl-5 nav-style-border" id="myTab" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="timeline-tab" data-toggle="tab" href="#timeline" role="tab" aria-controls="timeline" aria-selected="true"><h4>Seller Details</h4></a>
+                                    </li>
+
+                                </ul>
+                                <div class="tab-content px-3 px-xl-5" id="myTabContent">
+                                    <div class="tab-pane fade show active" id="timeline" role="tabpanel" aria-labelledby="timeline-tab">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-10">
+                                                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-10">
+                                                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.Mobile, htmlAttributes: new { @class = "control-label col-md-2" })
+                                            <div class="col-md-10">
+                                                @Html.EditorFor(model => model.Mobile, new { htmlAttributes = new { @class = "form-control" } })
+                                                @Html.ValidationMessageFor(model => model.Mobile, "", new { @class = "text-danger" })<br />
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-md-offset-2 col-md-10">
+
+                                            <a onclick="window.history.back();" class="btn btn-outline-danger">Cancel</a>
+                                            <input type="submit" class="btn btn-success" value="Update" />
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+      
+    </div>
+        }
+    </div>
+</div>
+

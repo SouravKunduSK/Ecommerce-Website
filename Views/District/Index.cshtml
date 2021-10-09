@@ -1,0 +1,55 @@
+﻿@model List<Shopping.Models.District>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-fluid px-4">
+    <h2 class="mt-4">Districts</h2>
+    <!-- Breadcrumbs-->
+
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+        <li class="breadcrumb-item active">Districts</li>
+    </ol>
+
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-table"></i>
+            All Categories
+            <a href="@(Session["sellername"] != null ? Url.Action("Create", "District") : Url.Action("Login", "Account"))" class="btn btn-info fa-pull-right">Add New</a>
+        </div>
+        <div class="card-body">
+            <table id="datatablesSimple">
+                <thead>
+                    <tr>
+                        <th>Serial No.</th>
+                        <th>District Name</th>
+                        <th>Action</th>
+
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+
+                        <tr>
+                            <td>@(Model.IndexOf(item)+1)</td>
+
+                            <td>@item.DistrictName</td>
+                            <td>
+                                <a href="@Url.Action("Edit", "District", new { id = item.DistrictID})" class="btn btn-info">Edit</a>
+                                <a href="@Url.Action("Delete", "District", new { id = item.DistrictID})" class="btn btn-danger">Delete</a>
+                            </td>
+
+
+                        </tr>
+
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

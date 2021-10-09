@@ -1,0 +1,118 @@
+﻿@model List<Shopping.Models.getallorderuser>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Start All Title Box -->
+<div class="all-title-box">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>Orders</h2>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">My Account</a></li>
+                    <li class="breadcrumb-item active">Orders</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End All Title Box -->
+<!-- Start Cart  -->
+<div class="cart-box-main">
+    <div class="container">
+        @using (Html.BeginForm("Index", "MyOrder", FormMethod.Post))
+        {
+
+            <div class="row">
+
+                <div class="col-lg-12">
+
+                    <div class="table-main table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Sr.No</th>
+                                    <th>Order ID</th>
+                                    <th>Total Amount</th>
+                                    <th>Order Date</th>
+                                    <th>Status</th>
+                                    <th>Date & Time</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+
+
+
+                            <tbody>
+                                @foreach (var item in Model)
+                                    {
+                                        <tr>
+
+                                            <td>@(Model.IndexOf(item)+1)</td>
+                                            <td>@item.OrderedID</td>
+                                                <td>@item.TotalAmount</td>
+                                                <td>@item.OrderDate</td>
+                                                @if (item.Shipped == true && item.Deliver == false)
+                                                {
+                                                    <td>Shipped</td>
+                                                }
+                                                else if (item.Shipped == true && item.Deliver == true)
+                                                {
+                                                    <td>Delivered</td>
+
+                                                }
+                                                else if (item.CancelOrder == true)
+                                                {
+                                                    <td>Cancled</td>
+
+                                                }
+                                                else
+                                                {
+                                                    <td>On Process</td>
+
+                                                }
+
+
+                                                @if (item.Shipped == true && item.Deliver == false)
+                                                {
+                                                    <td>Shipping On :@item.ShippedDate</td>
+                                                }
+                                                else if (item.Shipped == true && item.Deliver == true)
+                                                {
+                                                    <td>Delivered On :@item.DeliveryDate</td>
+
+                                                }
+                                                else if (item.CancelOrder == true)
+                                                {
+                                                    <td>Cancled On : @item.CancelDate</td>
+
+                                                }
+                                                else
+                                                {
+                                                    <td> </td>
+                                                }
+
+
+                                                <td>
+
+                                                   
+                                                    <a href="@Url.Action("Details", "MyOrder", new { id = item.OrderedID})" class="btn btn-warning">Details</a>
+
+
+                                                </td>
+                                        </tr>
+                                        
+                                 }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+
+        }
+    </div>
+</div>
+

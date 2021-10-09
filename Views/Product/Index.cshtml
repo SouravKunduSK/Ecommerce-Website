@@ -1,0 +1,94 @@
+﻿@model List<Shopping.Models.Product>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-fluid px-4">
+    <h2 class="mt-4">Products</h2>
+    <!-- Breadcrumbs-->
+
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+        <li class="breadcrumb-item active">Products</li>
+    </ol>
+
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-table"></i>
+            All Products
+            <a href="@(Session["sellername"] != null ? Url.Action("Create", "Product") : Url.Action("Login", "Account"))" class="btn btn-info fa-pull-right">Add New</a>
+        </div>
+        <div class="card-body">
+            <table id="datatablesSimple">
+                <thead>
+                    <tr>
+                        <th>Serial No.</th>
+                        <th>Category Name</th>
+                        <th>Product Name</th>
+                        <th>Quantity Per Unit</th>
+                        <th>Price Per Unit</th>
+                        <th>Old Price</th>
+                        <th>Discount</th>
+                        <th>Unit In Stock</th>
+                        <th>Unit On Order</th>
+                        <th>Description</th>
+                        <th>Picture</th>
+                        <th>Availability</th>
+                        <th>Add Badge</th>
+                        <th>Offer Title</th>
+                        <th>Offer Badge Class</th>
+                        <th>Uploaded Date</th>
+                        <th>Edit Date</th>
+                        <th>Action</th>
+
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+
+                    <tr>
+                        <td>@(Model.IndexOf(item)+1)</td>
+
+                        <td>@item.Category.CategoryName</td>
+                        <td>@item.ProductName</td>
+                        <td>@item.QuantityPerUnit</td>
+                        <td>@item.UnitPrice</td>
+                        <td>@item.OldPrice</td>
+                        <td>@item.Discount</td>
+                        <td>@item.UnitInStock</td>
+                        <td>@item.UnitOnOrder</td>
+                        <td>@item.Description</td>
+                        <td><img src="~/Uploads/@item.Picture1" style="width:100px; height:67px;" /></td>
+                        @if (item.ProductAvailable == true)
+                        {
+                            <td>Available</td>
+                        }
+                        else if (item.ProductAvailable == false)
+                        {
+                            <td>Not Available</td>
+
+                        }
+                        <td>@item.AddBadge</td>
+                        <td>@item.OfferTitle</td>
+                        <td>@item.OfferBadgeClass</td>
+
+                        <td>@item.CreatedDate</td>
+                        <td>@item.ModifiedDate</td>
+                        <td>
+                            <a href="@Url.Action("Edit", "Product", new { id = item.ProductID})" class="btn btn-info">Edit</a>
+                            <a href="@Url.Action("Delete", "Product", new { id = item.ProductID})" class="btn btn-danger">Delete</a>
+                        </td>
+
+
+                    </tr>
+
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

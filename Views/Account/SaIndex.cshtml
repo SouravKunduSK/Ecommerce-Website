@@ -1,0 +1,65 @@
+﻿@model Shopping.Models.User
+
+@{
+    ViewBag.Title = "SaIndex";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="container">
+    @*<h2>Seller Profile</h2>*@
+
+    <div>
+        <h2>Seller Profile</h2>
+        <hr />
+        <div class="content-wrapper">
+            <div class="content">
+                <div class="bg-white border rounded">
+                    <div class="row no-gutters">
+                        <div class="col-lg-4 col-xl-3">
+                            <div class="profile-content-left pt-5 pb-3 px-3 px-xl-5">
+                                <div class="card text-center widget-profile px-0 border-0">
+                                    <h4>Profile Picture</h4>
+                                    <hr />
+                                    @*<div class="card-img mx-auto rounded-circle">*@
+                                        <img height="200" width="180" src="~/Uploads/@Url.Content(Model.Picture)" alt="user image">
+                                    @*</div>*@
+                                    <div class="card-body">
+                                        <h4 class="py-2 text-dark">@Session["sellername"]</h4>
+                                        @*<p>Albrecht.straub@gmail.com</p>*@
+                                        <a class="btn btn-primary btn-pill btn-lg my-4" href="@Url.Action("SaEdit", "Account", new { id = Model.UserID})">Edit Profile</a>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class="col-lg-8 col-xl-9">
+                            <div class="profile-content-right py-5">
+                                <ul class="nav nav-tabs px-3 px-xl-5 nav-style-border" id="myTab" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="timeline-tab" data-toggle="tab" href="#timeline" role="tab" aria-controls="timeline" aria-selected="true"><h4>Seller Details</h4></a>
+                                    </li>
+                                    
+                                </ul>
+                                <div class="tab-content px-3 px-xl-5" id="myTabContent">
+                                    <div class="tab-pane fade show active" id="timeline" role="tabpanel" aria-labelledby="timeline-tab">
+                                        <h5>Name: <strong>@Model.FirstName @Model.LastName </strong> </h5>
+                                        <h5>Email: <strong>@Model.Email </strong> </h5>
+                                        <h5>Mobile No: <strong>@Model.Mobile </strong></h5>
+                                        <h5>Registered Date: <strong>@Model.Created </strong> </h5>
+                                        <h5>Edited Date: <strong>@Model.Modified </strong> </h5>
+
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,468 @@
+
+/** ADD YOUR AWESOME CODES HERE **/
+
+/*==================
+  PRODUCT SECTION
+====================*/
+
+#aa-product {
+    display: inline;
+    float: left;
+    width: 100%;
+}
+
+    #aa-product .aa-product-area {
+        display: inline;
+        float: left;
+        width: 100%;
+    }
+
+        #aa-product .aa-product-area .aa-product-inner {
+            display: inline;
+            float: left;
+            width: 100%;
+        }
+
+            #aa-product .aa-product-area .aa-product-inner .aa-product-catg {
+                float: left;
+            }
+
+            #aa-product .aa-product-area .aa-product-inner #all {
+                text-align: center;
+                padding-bottom: 35px;
+            }
+
+            #aa-product .aa-product-area .aa-product-inner #new {
+                text-align: center;
+                padding-bottom: 35px;
+            }
+
+            #aa-product .aa-product-area .aa-product-inner #top {
+                text-align: center;
+                padding-bottom: 35px;
+            }
+
+.aa-product-nav {
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+}
+
+    .aa-product-nav li {
+        display: inline-block;
+    }
+
+        .aa-product-nav li a {
+            color: #333;
+            display: inline-block;
+            padding: 8px 15px;
+        }
+
+.aa-product-content {
+    margin-left: -30px;
+    margin-top: 20px;
+}
+
+    .aa-product-content li {
+        background-color: #ccc;
+        display: block;
+        float: left;
+        height: 250px;
+        margin: 0 0 0 30px;
+        width: 22.5%;
+        margin-bottom: 20px;
+    }
+
+.aa-products-tab {
+    display: block;
+    text-align: center;
+    border: none;
+    margin-bottom: 20px;
+}
+
+    .aa-products-tab li {
+        border: none;
+        float: none;
+        display: inline-block;
+    }
+
+        .aa-products-tab li a {
+            border: none;
+            font-size: 16px;
+            text-transform: uppercase;
+            border-radius: 0;
+            border-bottom: 1px solid #fff;
+            margin: 0 6px;
+            padding: 10px 12px;
+            -webkit-transition: all 0.5s;
+            -moz-transition: all 0.5s;
+            -ms-transition: all 0.5s;
+            -o-transition: all 0.5s;
+            transition: all 0.5s;
+        }
+
+            .aa-products-tab li a:hover, .aa-products-tab li a:focus {
+                color: #333;
+                background-color: inherit;
+            }
+
+        .aa-products-tab li.active a {
+            border: none;
+            background-color: inherit;
+            font-size: 16px;
+        }
+
+            .aa-products-tab li.active a:hover, .aa-products-tab li.active a:focus {
+                border: none;
+                background-color: inherit;
+            }
+
+.aa-product-catg {
+    margin-left: -54px;
+}
+
+    .aa-product-catg li {
+        display: block;
+        float: left;
+        height: 380px;
+        text-align: center;
+        margin: 0 0 20px 55px;
+        width: 20.5%;
+        position: relative;
+        overflow: hidden;
+    }
+
+        .aa-product-catg li:hover figure .aa-product-img {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .aa-product-catg li:hover figure .aa-add-card-btn {
+            -moz-transform: scale(1);
+            -o-transform: scale(1);
+            -ms-transform: scale(1);
+            -webkit-transform: scale(1);
+            transform: scale(1);
+        }
+
+        .aa-product-catg li:hover .aa-product-hvr-content {
+            -moz-transform: translateX(0%);
+            -o-transform: translateX(0%);
+            -ms-transform: translateX(0%);
+            -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+        }
+
+        .aa-product-catg li figure {
+            position: relative;
+            height: 300px;
+        }
+
+            .aa-product-catg li figure .aa-product-img {
+                background-color: #f9f9fb;
+                display: block;
+                -webkit-transition: all 0.5s;
+                -moz-transition: all 0.5s;
+                -ms-transition: all 0.5s;
+                -o-transition: all 0.5s;
+                transition: all 0.5s;
+            }
+
+            .aa-product-catg li figure .aa-add-card-btn {
+                background: #000 none repeat scroll 0 0;
+                bottom: 0;
+                color: #fff;
+                font-size: 16px;
+                font-weight: bold;
+                left: 0;
+                padding: 12px 10px;
+                position: absolute;
+                right: 0;
+                text-transform: uppercase;
+                -webkit-transition: all 0.5s;
+                -moz-transition: all 0.5s;
+                -ms-transition: all 0.5s;
+                -o-transition: all 0.5s;
+                transition: all 0.5s;
+                -moz-transform: scale(0);
+                -o-transform: scale(0);
+                -ms-transform: scale(0);
+                -webkit-transform: scale(0);
+                transform: scale(0);
+            }
+
+                .aa-product-catg li figure .aa-add-card-btn span {
+                    margin-right: 5px;
+                }
+
+        .aa-product-catg li .aa-product-title {
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+            .aa-product-catg li .aa-product-title a {
+                color: #333;
+                -webkit-transition: all 0.5s;
+                -moz-transition: all 0.5s;
+                -ms-transition: all 0.5s;
+                -o-transition: all 0.5s;
+                transition: all 0.5s;
+            }
+
+        .aa-product-catg li .aa-product-price {
+            font-weight: bold;
+            letter-spacing: 0.5px;
+            font-size: 16px;
+        }
+
+            .aa-product-catg li .aa-product-price del {
+                margin-left: 5px;
+            }
+
+        .aa-product-catg li .aa-product-hvr-content {
+            left: 0;
+            position: absolute;
+            right: 0;
+            text-align: center;
+            top: 50%;
+            width: 100%;
+            -webkit-transition: all 0.5s;
+            -moz-transition: all 0.5s;
+            -ms-transition: all 0.5s;
+            -o-transition: all 0.5s;
+            transition: all 0.5s;
+            -moz-transform: translateX(-100%);
+            -o-transform: translateX(-100%);
+            -ms-transform: translateX(-100%);
+            -webkit-transform: translateX(-100%);
+            transform: translateX(-100%);
+        }
+
+            .aa-product-catg li .aa-product-hvr-content a {
+                background: #fff none repeat scroll 0 0;
+                display: inline-block;
+                margin: 0 5px;
+                padding: 5px 10px;
+            }
+
+        .aa-product-catg li .aa-badge {
+            position: absolute;
+            top: 5%;
+            left: 0;
+            padding: 5px 10px;
+            color: #fff;
+            font-size: 15px;
+        }
+
+        .aa-product-catg li .aa-sale {
+            background-color: #008000;
+        }
+
+        .aa-product-catg li .aa-sold-out {
+            background-color: #FF0000;
+        }
+
+        .aa-product-catg li .aa-hot {
+            background-color: #ff6600;
+        }
+
+/*=== modal window ===*/
+
+#quick-view-modal .modal-dialog {
+    margin: 10% auto;
+    width: 800px;
+}
+
+#quick-view-modal .modal-content {
+    border-radius: 0;
+}
+
+    #quick-view-modal .modal-content button.close {
+        margin-right: 10px;
+        -webkit-transition: all 0.5s;
+        -moz-transition: all 0.5s;
+        -ms-transition: all 0.5s;
+        -o-transition: all 0.5s;
+        transition: all 0.5s;
+    }
+
+        #quick-view-modal .modal-content button.close:hover {
+            opacity: 1;
+        }
+
+    #quick-view-modal .modal-content .aa-product-view-slider .simpleLens-container {
+        width: 100%;
+    }
+
+        #quick-view-modal .modal-content .aa-product-view-slider .simpleLens-container .simpleLens-big-image-container {
+            width: 100%;
+        }
+
+            #quick-view-modal .modal-content .aa-product-view-slider .simpleLens-container .simpleLens-big-image-container .simpleLens-lens-image {
+                width: 100%;
+            }
+
+    #quick-view-modal .modal-content .aa-product-view-slider .simpleLens-thumbnails-container {
+        text-align: center;
+    }
+
+    #quick-view-modal .modal-content .aa-product-view-content {
+        padding-right: 10px;
+        padding-bottom: 10px;
+    }
+
+        #quick-view-modal .modal-content .aa-product-view-content h3 {
+            font-weight: bold;
+            margin-top: 0px;
+            margin-bottom: 5px;
+        }
+
+        #quick-view-modal .modal-content .aa-product-view-content h4 {
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        #quick-view-modal .modal-content .aa-product-view-content > p {
+            font-size: 15px;
+            letter-spacing: 0.5px;
+            margin-bottom: 14px;
+        }
+
+        #quick-view-modal .modal-content .aa-product-view-content .aa-price-block {
+            position: relative;
+            margin-bottom: 5px;
+        }
+
+            #quick-view-modal .modal-content .aa-product-view-content .aa-price-block .aa-product-view-price {
+                font-size: 18px;
+            }
+
+            #quick-view-modal .modal-content .aa-product-view-content .aa-price-block .aa-product-avilability {
+                position: absolute;
+                right: 0;
+                top: 0;
+            }
+
+        #quick-view-modal .modal-content .aa-product-view-content .aa-prod-view-size a {
+            border: 1px solid #ddd;
+            display: inline-block;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            margin-bottom: 5px;
+            margin-right: 8px;
+            padding: 5px 10px;
+            -webkit-transition: all 0.5s;
+            -moz-transition: all 0.5s;
+            -ms-transition: all 0.5s;
+            -o-transition: all 0.5s;
+            transition: all 0.5s;
+        }
+
+        #quick-view-modal .modal-content .aa-product-view-content .aa-prod-quantity {
+            margin-top: 10px;
+        }
+
+            #quick-view-modal .modal-content .aa-product-view-content .aa-prod-quantity form {
+                display: inline-block;
+            }
+
+                #quick-view-modal .modal-content .aa-product-view-content .aa-prod-quantity form select {
+                    height: 25px;
+                    width: 40px;
+                }
+
+            #quick-view-modal .modal-content .aa-product-view-content .aa-prod-quantity .aa-prod-category {
+                display: inline-block;
+                margin-left: 15px;
+            }
+
+                #quick-view-modal .modal-content .aa-product-view-content .aa-prod-quantity .aa-prod-category a {
+                    font-size: 14px;
+                }
+
+        #quick-view-modal .modal-content .aa-product-view-content .aa-prod-view-bottom {
+            border-top: 1px solid #ddd;
+            margin-top: 10px;
+            padding-top: 10px;
+        }
+
+            #quick-view-modal .modal-content .aa-product-view-content .aa-prod-view-bottom a:last-child {
+                margin-left: 10px;
+            }
+
+
+#half-stars-example {
+    /* use display:inline-flex to prevent whitespace issues. alternatively, you can put all the children of .rating-group on a single line */
+    .rating-group
+
+{
+    display: inline-flex;
+}
+
+/* make hover effect work properly in IE */
+.rating__icon {
+    pointer-events: none;
+}
+
+/* hide radio inputs */
+.rating__input {
+    position: absolute !important;
+    left: -9999px !important;
+}
+
+/* set icon padding and size */
+.rating__label {
+    cursor: pointer;
+    /* if you change the left/right padding, update the margin-right property of .rating__label--half as well. */
+    padding: 0 0.1em;
+    font-size: 2rem;
+}
+
+/* add padding and positioning to half star labels */
+.rating__label--half {
+    padding-right: 0;
+    margin-right: -0.6em;
+    z-index: 2;
+}
+
+/* set default star color */
+.rating__icon--star {
+    color: orange;
+}
+
+/* set color of none icon when unchecked */
+.rating__icon--none {
+    color: #eee;
+}
+
+/* if none icon is checked, make it red */
+.rating__input--none:checked + .rating__label .rating__icon--none {
+    color: red;
+}
+
+/* if any input is checked, make its following siblings grey */
+.rating__input:checked ~ .rating__label .rating__icon--star {
+    color: #ddd;
+}
+
+/* make all stars orange on rating group hover */
+.rating-group:hover .rating__label .rating__icon--star,
+.rating-group:hover .rating__label--half .rating__icon--star {
+    color: orange;
+}
+
+/* make hovered input's following siblings grey on hover */
+.rating__input:hover ~ .rating__label .rating__icon--star,
+.rating__input:hover ~ .rating__label--half .rating__icon--star {
+    color: #ddd;
+}
+
+/* make none icon grey on rating group hover */
+.rating-group:hover .rating__input--none:not(:hover) + .rating__label .rating__icon--none {
+    color: #eee;
+}
+
+/* make none icon red on hover */
+.rating__input--none:hover + .rating__label .rating__icon--none {
+    color: red;
+}
+}
